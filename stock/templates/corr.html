@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Azure 股票預測</title>
+
+    {% load staticfiles %}
+
+    <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static "vendor/fontawesome-free/css/all.min.css" %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/corr.css" %}" rel="stylesheet">
+
+
+</head>
+<body id="page-top">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="/">Azure Stock Prediction</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">簡介</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#signup">相關性股票查詢</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/health/">股票健檢</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>相關性股票</h1>
+                    <span class="subheading">讓您了解所選股票同漲反跌的相關股票</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+
+<section id="about" class="about-section text-dark-50">
+    <h1 class="text-center">正相關股票 / 負相關股票</h1>
+    <br>
+    <div class="row col-md-9 mx-auto">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/static/images/good.png" class="img-fluid mb-3 mb-lg-0" alt="">
+                </div>
+                <div id="goodANDbad-text" class="col-md-6">
+                    <h2 class="mb-4">正相關股票</h2>
+                    <p class="mb-0">正相關股票為所有上市股票中，前10天開盤價相關系數最高的前十檔股票</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/static/images/bad1.png" class="img-fluid mb-3 mb-lg-0" alt="">
+                </div>
+                <div id="goodANDbad-text" class="col-md-6">
+                    <h2 class="mb-4">負相關股票</h2>
+                    <p class="mb-0">負相關股票為所有上市股票中，前10天開盤價相關系數最低的前十檔股票</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr>
+
+<!-- Signup Section -->
+<section id="signup" class="signup-section col-md-9 mx-auto">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto text-center">
+                <i class="fas fa-chart-line fa-3x mb-2 text-white"></i>
+                <h2 class="text-white mb-5">相關性股票</h2>
+
+                <form class="form-inline d-flex" action="/stock/" method="post">
+                    {% csrf_token %}
+                    <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="stock_id"
+                           placeholder="輸入股票名稱或代碼">
+                    <button type="submit" class="btn btn-primary mx-auto">開始分析</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="results-section text-dark-50">
+    <h1 class="text-center">1101 台泥</h1>
+    <br>
+    <div class="row col-md-9 mx-auto">
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-lg font-weight-bold text-primary text-uppercase mb-1">今日開盤價
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$39.05</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-lg font-weight-bold text-success text-uppercase mb-1">最高價</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40.2</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-lg font-weight-bold text-success text-uppercase mb-1">最低價</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$38.9</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-lg font-weight-bold text-success text-uppercase mb-1">交易量</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">9377張</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row col-md-9 mx-auto">
+        <div id="result" class="col-md-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/static/images/good.png" class="img-fluid mb-3 mb-lg-0" alt="">
+                </div>
+                <div id="goodANDbad-text" class="col-md-6">
+                    <h2 class="mb-4 text-gray-100">正相關股票</h2>
+                    <div class="row">
+                        <a class="btn_stock text-white"><span>2020<br>美亞</span></a>
+                        <a class="btn_stock text-white"><span>2535<br>達欣工</span></a>
+                        <a class="btn_stock text-white"><span>1514<br>亞力</span></a>
+                        <a class="btn_stock text-white"><span>2889<br>國票金</span></a>
+                        <a class="btn_stock text-white"><span>5469<br>瀚宇博</span></a>
+                        <a class="btn_stock text-white"><span>5906<br>台南-KY</span></a>
+                        <a class="btn_stock text-white"><span>2886<br>兆豐金</span></a>
+                        <a class="btn_stock text-white"><span>1712<br>興農</span></a>
+                        <a class="btn_stock text-white"><span>2880<br>華南金</span></a>
+                        <a class="btn_stock text-white"><span>6112<br>聚碩</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="result" class="col-md-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/static/images/bad1.png" class="img-fluid mb-3 mb-lg-0" alt="">
+                </div>
+                <div id="goodANDbad-text" class="col-md-6">
+                    <h2 class="mb-4 text-gray-100">負相關股票</h2>
+                    <div class="row">
+                        <a class="btn_stock text-white"><span>1466<br>聚隆</span></a>
+                        <a class="btn_stock text-white"><span>9136<br>巨騰</span></a>
+                        <a class="btn_stock text-white"><span>2485<br>兆赫</span></a>
+                        <a class="btn_stock text-white"><span>2722<br>夏都</span></a>
+                        <a class="btn_stock text-white"><span>3057<br>喬鼎</span></a>
+                        <a class="btn_stock text-white"><span>3686<br>達能</span></a>
+                        <a class="btn_stock text-white"><span>910482<br>聖馬丁</span></a>
+                        <a class="btn_stock text-white"><span>1432<br>大魯閣</span></a>
+                        <a class="btn_stock text-white"><span>2406<br>國碩</span></a>
+                        <a class="btn_stock text-white"><span>4934<br>太極</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Bootstrap core JavaScript -->
+
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/static/js/main.min.js"></script>
+
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+</body>
+</html>

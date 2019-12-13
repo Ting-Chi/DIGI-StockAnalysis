@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Azure 股票預測</title>
+
+    {% load staticfiles %}
+
+    <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static "vendor/fontawesome-free/css/all.min.css" %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/health.css" %}" rel="stylesheet">
+
+
+</head>
+<body id="page-top">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="/">Azure Stock Prediction</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">簡介</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#signup">股票健檢</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/corr/">相關性股票</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>股票健檢</h1>
+                    <span class="subheading">股票特質篩選，選出適合你的股票</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+
+<section id="about" class="about-section text-dark-50">
+    <h1 class="text-center font-weight-bold">樂透股票 / 不流動性股票</h1>
+    <br><br>
+    <div class="row col-md-9 mx-auto">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/static/images/h1.png" class="img-fluid mb-3 mb-lg-0" alt="">
+                </div>
+                <div id="health-text" class="col-md-6">
+                    <h2 class="mb-4">樂透股票</h2>
+                    <p class="mb-0">樂透股健檢，股票暴漲暴跌的可能性，是天堂或地獄?</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/static/images/h2.png" class="img-fluid mb-3 mb-lg-0" alt="">
+                </div>
+                <div id="health-text" class="col-md-6">
+                    <h2 class="mb-4">不流動性股票</h2>
+                    <p class="mb-0">不流動性健檢，冷門交易，投資人挖寶的好機會，但也存在不好脫手的問題</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr>
+
+<!-- Signup Section -->
+<section id="signup" class="signup-section col-md-9 mx-auto">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto text-center">
+                <i class="fas fa-chart-line fa-3x mb-2 text-white"></i>
+                <h2 class="text-white mb-5">股票健檢</h2>
+
+                <form class="form-inline d-flex" action="/stock/" method="post">
+                    {% csrf_token %}
+                    <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="stock_id"
+                           placeholder="輸入股票名稱或代碼">
+                    <button type="submit" class="btn btn-primary mx-auto">開始健檢</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="results-section text-dark-50">
+    <h1 class="text-center">1101 台泥</h1>
+    <br>
+    <div class="row col-md-9 mx-auto">
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-lg font-weight-bold text-primary text-uppercase mb-1">今日開盤價
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$39.05</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-lg font-weight-bold text-success text-uppercase mb-1">最高價</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40.2</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-lg font-weight-bold text-success text-uppercase mb-1">最低價</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$38.9</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-lg font-weight-bold text-success text-uppercase mb-1">交易量</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">9377張</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div id="health" class="row col-md-13 mx-auto">
+            <div class="progress mx-auto " data-value='80'>
+                    <span class="progress-left">
+                        <span class="progress-bar"></span>
+                    </span>
+                <span class="progress-right">
+                        <span class="progress-bar"></span>
+                    </span>
+                <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="h2 font-weight-bold">8<sub class="small">/10</sub></div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="featured-text text-center text-lg-left">
+                    <h2 class="font-weight-bold">樂透股分數</h2>
+                    <p class="text-black-100 mb-0">等級越高表示樂透股可能性越大，在台股過去研究中樂透股不適合長期持有，且其風險較高</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="health" class="row col-md-13 mx-auto">
+            <div class="progress mx-auto " data-value='30'>
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+                <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="h2 font-weight-bold">3<sub class="small">/10</sub></div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="featured-text text-center text-lg-left">
+                    <h2 class="font-weight-bold">不流動股分數</h2>
+                    <p class="text-black-100 mb-0">等級越高表示該股票流動性越差，根據文獻指出流動性低之資產，資產持有者可能發生想要出售卻賣不掉的情況，買方會要求給予折價時，以彌補額外需承擔的流動性風險，此為流動性差的股票出現溢酬現象的原因之一</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Bootstrap core JavaScript -->
+
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/static/js/main.min.js"></script>
+
+
+<!-- Custom scripts for all pages-->
+<script src="/static/js/sb-admin-2.min.js"></script>
+
+<script src="/static/js/circle.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</body>
+</html>

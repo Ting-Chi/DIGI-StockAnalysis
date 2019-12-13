@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Azure 股票預測</title>
+
+    {% load staticfiles %}
+
+    <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static "vendor/fontawesome-free/css/all.min.css" %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/main.css" %}" rel="stylesheet">
+</head>
+<body id="page-top">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Azure Stock Prediction</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#signup">股票預測</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#projects">相關性股票</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#projects">股票健檢</a>
+                </li>
+                <!--
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
+                </li>
+                -->
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+        <div class="mx-auto text-center">
+            <h1 class="mx-auto my-0 text-uppercase">Azure 股票預測</h1>
+            <h2 class="text-white-50 mx-auto mt-2 mb-5">預測隔日開盤價，給您不一樣的體驗</h2>
+            <a href="#signup" class="btn btn-primary js-scroll-trigger">開始預測</a>
+            <!-- <a href="/stock" class="btn btn-primary js-scroll-trigger">開始預測</a>-->
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<section id="about" class="about-section text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="/static/images/Azure.png" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-6 mx-auto">
+                <h1 class="text-white mb-4">Azure</h1>
+                <p class="text-white">Azure 是一款不斷擴大的雲端運算服務組合，可協助組織應對業務挑戰。Azure 可讓您自由地在大規模的全球網路上使用自己慣用的工具和架構來建置、管理及部署應用程式。</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Signup Section -->
+<section id="signup" class="signup-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto text-center">
+                <i class="fas fa-chart-line fa-3x mb-2 text-white"></i>
+                <h2 class="text-white mb-5">股票預測</h2>
+
+                <form class="form-inline d-flex" action="/stock/" method="post">
+                    {% csrf_token %}
+                    <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="stock_id"
+                           placeholder="輸入股票名稱或代碼">
+                    <button type="submit" class="btn btn-primary mx-auto">開始預測</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects-section bg-light">
+    <div class="container">
+
+        <!-- Featured Project Row
+        <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+            <div class="col-xl-8 col-lg-7">
+                <img class="img-fluid mb-3 mb-lg-0" src="/static/images/bg-masthead.jpg" alt="">
+            </div>
+            <div class="col-xl-4 col-lg-5">
+                <div class="featured-text text-center text-lg-left">
+                    <h4>Shoreline</h4>
+                    <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it
+                        for any project - even commercial projects! Download it, customize it, and publish your
+                        website!</p>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <!-- Project One Row -->
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="/static/images/related.jpg" alt="">
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-blue text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-left">
+                            <h4 class="text-white">相關性股票</h4>
+                            <h6 class="mb-0 text-white-50">讓您了解所選股票同漲反跌的相關股票</h6>
+                            <hr class="d-none d-lg-block mb-0 ml-0">
+                            <br>
+                            <a href="/corr/" class="btn btn-sm js-scroll-trigger">了解詳情</a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Two Row -->
+        <div class="row justify-content-center no-gutters">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="/static/images/b2.jpg" alt="">
+            </div>
+            <div class="col-lg-6 order-lg-first">
+                <div class="bg-blue text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-right">
+                            <h4 class="text-white">股票健檢</h4>
+                            <h6 class="mb-0 text-white-50">股票特質篩選，選出適合你的股票</h6>
+                            <hr class="d-none d-lg-block mb-0 mr-0">
+                            <br>
+                            <a href="/health/" class="btn btn-sm js-scroll-trigger">開始健檢</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Contact Section -->
+<section class="contact-section bg-black">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Address</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Email</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">
+                            <a href="#">hello@yourdomain.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Phone</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">+1 (555) 902-8832</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="social d-flex justify-content-center">
+            <a href="#" class="mx-2">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="mx-2">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="mx-2">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black small text-center text-white-50">
+    <div class="container">
+        Copyright &copy; Your Website 2019
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/static/js/main.min.js"></script>
+
+</body>
+</html>
